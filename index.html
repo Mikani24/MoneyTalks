@@ -436,5 +436,16 @@ lucide-react/dist/esm/lucide-react.js:
 <!-- Vercel Web Analytics: counts visits anonymously once Analytics is
      enabled in the Vercel dashboard. Harmless everywhere else. -->
 <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+(function(){
+  function zap(){
+    document.querySelectorAll("button").forEach(function(b){
+      if (b.textContent && b.textContent.indexOf("Send from your email app") !== -1) b.style.display = "none";
+    });
+  }
+  new MutationObserver(zap).observe(document.body, { childList: true, subtree: true });
+  zap();
+})();
+</script>
 </body>
 </html>
